@@ -9,7 +9,8 @@
   "dependencies": {
     "firebase": "^3.6.1",
     "react": "15.3.2",
-    "react-native": "0.37.0"
+    "react-native": "^0.39.0",
+    "react-native-modal-picker": "0.0.16"
   },
   "jest": {
     "preset": "jest-react-native"

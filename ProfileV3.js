@@ -11,20 +11,37 @@ import {
   Text,
   View,
   TouchableOpacity,
-  TextInput
+  TextInput,
+  Modal,
+  Picker,
+  TouchableHighlight
 } from 'react-native';
 
 class Profile extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {modalVisible:false,petType:"Dog"};
+  }
+
+
   render() {
     return (
       <View style={styles.container}>
+
+
+
       <View style={styles.Vtop}>
         <Text style={styles.welcome}>Profile</Text>
       </View>
         <View style={styles.Vmiddle}>
           <TextInput keyboardType='numeric' placeholder="HN" style={styles.inputtext}/>
           <TextInput keyboardType='phone-pad' placeholder="Pet name" style={styles.inputtext}/>
-          <TextInput keyboardType='default' placeholder="Type" style={styles.inputtext}/>
+          <TouchableHighlight style={styles.typeSelectbutton}onPress={() => {
+            this.setState({modalVisible:true});
+          }}>
+            <Text>Select Pet Type</Text>
+          </TouchableHighlight>
           <TextInput keyboardType='default' placeholder="Birthdate" style={styles.inputtext}/>
 
           <TextInput keyboardType='default' placeholder="Owner name" style={styles.inputtext}/>
@@ -35,6 +52,31 @@ class Profile extends Component {
 
         <View style={styles.Vbottom}>
         <View style={styles.Vbottom}>
+        <Modal
+          animationType={"slide"}
+          transparent={true}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {alert("Modal has been closed.")}}
+          >
+         <View style={style= styles.ModalHolder}>
+          <View style = {style = styles.PickerHolder}>
+          <Picker
+            selectedValue={this.state.petType}
+            onValueChange={(pet) => this.setState({petType: pet})}
+          >
+            <Picker.Item label = "Dog" value = "Dog" />
+            <Picker.Item label = "Cat" value = "Cat" />
+          </Picker>
+          </View>
+
+          <View style = {style = styles.modalButtonHolder}>
+              <TouchableOpacity onPress={()=>{this.setState({modalVisible:false})}}>
+                <Text>Select</Text>
+              </TouchableOpacity>
+          </View>
+
+         </View>
+        </Modal>
           <TouchableOpacity style={styles.topButton}>
             <Text style={styles.welcome}>Save</Text>
           </TouchableOpacity>
@@ -102,8 +144,24 @@ const styles = StyleSheet.create({
     flex:1,
     flexDirection:'row',
     backgroundColor: "red",
-  }
+  },
+  PickerHolder:{
+    backgroundColor:"white",
+  },
+  ModalHolder:{
+    flex:1,
+    justifyContent:"flex-end",
 
+  },
+  modalButtonHolder:{
+    backgroundColor:"white",
+    alignItems:"center",
+    padding:20
+  },
+  typeSelectbutton:{
+    marginLeft: 20,
+    marginRight: 20,
+  }
 });
 
 export default Profile;
