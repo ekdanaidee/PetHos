@@ -32,23 +32,23 @@ class Profile extends Component {
     this.Profile = this.database.ref('Profile');
     this.writeDB = this.writeDB.bind(this);
     this.findHN = this.findHN.bind(this);
-    this.findHN();
   }
 
   findHN(){
     var newHN = 0;
     this.Profile.on('value',(snap)=>{
       snap.forEach((HNkey)=>{
-        var intHN = parseInt(HNkey,10);
-        
+        var intHN = parseInt(HNkey.key,10);
         if(intHN > newHN){
           newHN = intHN;
-          console.log(HNkey.key);
+          console.log(intHN);
         }
       })
     })
+    newHN = newHN+1;
+    newHN = newHN.toString();
 
-    this.setState({HN:newHN})
+    this.setState({HN:newHN});
   }
 
   writeDB(){
@@ -61,7 +61,21 @@ class Profile extends Component {
       phoneNumber:this.state.phoneNumber,
       email:this.state.email,
     });
+
+    this.props.navigator.pop()
   }
+
+  componentWillMount(){
+    console.log("ComponentWillMount");
+    this.findHN();
+  }
+   componentDidMount(){
+     console.log("componentDidMount");
+
+   }
+   componentWillReceiveProps(nextProps){
+     console.log("componentWillReceiveProps");
+   }
   render() {
     return (
       <View style={styles.container}>
@@ -72,7 +86,7 @@ class Profile extends Component {
         <Text style={styles.welcome}>Profile</Text>
       </View>
         <View style={styles.Vmiddle}>
-          <TextInput value={this.state.HN} onChangeText={(HN)=>this.setState({HN})} keyboardType='numeric' placeholder="HN" style={styles.inputtext}/>
+          <TextInput value={this.state.HN} onRender={this.findHN} onChangeText={(HN)=>this.setState({HN})} keyboardType='numeric' placeholder="HN" style={styles.inputtext}/>
           <TextInput value={this.state.petName} onChangeText={(petName)=>this.setState({petName})} keyboardType='default' placeholder="Pet name" style={styles.inputtext}/>
 
           <TextInput  keyboardType='default' value ={this.state.petType} style={styles.inputtext}/>
