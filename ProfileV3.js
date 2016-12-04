@@ -37,8 +37,8 @@ class Profile extends Component {
         <Text style={styles.welcome}>Profile</Text>
       </View>
         <View style={styles.Vmiddle}>
-          <TextInput value={this.state.HN} keyboardType='numeric' placeholder="HN" style={styles.inputtext}/>
-          <TextInput value={this.state.petName} keyboardType='default' placeholder="Pet name" style={styles.inputtext}/>
+          <TextInput value={this.state.HN} onChangeText={(HN)=>this.setState({HN})} keyboardType='numeric' placeholder="HN" style={styles.inputtext}/>
+          <TextInput value={this.state.petName} onChangeText={(petName)=>this.setState({petName})} keyboardType='default' placeholder="Pet name" style={styles.inputtext}/>
 
           <TextInput  keyboardType='default' value ={this.state.petType} style={styles.inputtext}/>
           <TouchableHighlight style={styles.typeSelectbutton}onPress={() => {
@@ -48,11 +48,11 @@ class Profile extends Component {
             <Text>Select Pet Type</Text>
           </TouchableHighlight>
 
-          <TextInput value={this.state.birthDate} keyboardType='default' placeholder="Birthdate" style={styles.inputtext}/>
-          <TextInput value={this.state.ownerName} keyboardType='default' placeholder="Owner name" style={styles.inputtext}/>
-          <TextInput value={this.state.address} keyboardType='default' placeholder="Address" style={styles.inputtext}/>
-          <TextInput value={this.state.phoneNumber} keyboardType='default' placeholder="Mobile number" style={styles.inputtext}/>
-		      <TextInput value={this.state.email} keyboardType='default' placeholder="Email" style={styles.inputtext}/>
+          <TextInput value={this.state.birthDate} onChangeText={(birthDate)=>this.setState({birthDate})} keyboardType='default' placeholder="Birthdate" style={styles.inputtext}/>
+          <TextInput value={this.state.ownerName} onChangeText={(ownerName)=>this.setState({ownerName})} keyboardType='default' placeholder="Owner name" style={styles.inputtext}/>
+          <TextInput value={this.state.address} onChangeText={(address)=>this.setState({address})} keyboardType='default' placeholder="Address" style={styles.inputtext}/>
+          <TextInput value={this.state.phoneNumber} onChangeText={(phoneNumber)=>this.setState({phoneNumber})} keyboardType='default' placeholder="Mobile number" style={styles.inputtext}/>
+		      <TextInput value={this.state.email} onChangeText={(email)=>this.setState({email})} keyboardType='default' placeholder="Email" style={styles.inputtext}/>
         </View>
 
         <View style={styles.Vbottom}>
