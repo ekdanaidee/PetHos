@@ -23,7 +23,7 @@ class Profile extends Component {
 
   constructor(props){
     super(props);
-    this.state = {modalVisible:false,HN:"",petName:"",petType:"Dog",birthDate:"",ownerName:"",Address,"",phoneNumber};
+    this.state = {modalVisible:false,HN:"",petName:"",petType:"Dog",birthDate:"",ownerName:"",address:"",phoneNumber:"",email:""};
   }
 
 
@@ -49,10 +49,10 @@ class Profile extends Component {
           </TouchableHighlight>
 
           <TextInput value={this.state.birthDate} keyboardType='default' placeholder="Birthdate" style={styles.inputtext}/>
-          <TextInput keyboardType='default' placeholder="Owner name" style={styles.inputtext}/>
-          <TextInput keyboardType='default' placeholder="Address" style={styles.inputtext}/>
-          <TextInput keyboardType='default' placeholder="Mobile number" style={styles.inputtext}/>
-		      <TextInput keyboardType='default' placeholder="Email" style={styles.inputtext}/>
+          <TextInput value={this.state.ownerName} keyboardType='default' placeholder="Owner name" style={styles.inputtext}/>
+          <TextInput value={this.state.address} keyboardType='default' placeholder="Address" style={styles.inputtext}/>
+          <TextInput value={this.state.phoneNumber} keyboardType='default' placeholder="Mobile number" style={styles.inputtext}/>
+		      <TextInput value={this.state.email} keyboardType='default' placeholder="Email" style={styles.inputtext}/>
         </View>
 
         <View style={styles.Vbottom}>
