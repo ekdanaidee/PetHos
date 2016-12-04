@@ -14,12 +14,17 @@ import {
   TextInput
 } from 'react-native';
 
+import * as firebase from 'firebase';
+
+
 class Diagnosis extends Component {
   constructor(props){
     super(props);
 
     this.state = {HN:"",Currentdate:"",Symptom:"",Diagnosis:"",Treatment:"",Remark:""};
-
+    this.database = firebase.database();
+    this.Profile = this.database.ref('Profile');
+    
   }
 
 

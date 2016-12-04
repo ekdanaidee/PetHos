@@ -86,7 +86,10 @@ class Profile extends Component {
         <Text style={styles.welcome}>Profile</Text>
       </View>
         <View style={styles.Vmiddle}>
-          <TextInput value={this.state.HN} onRender={this.findHN} onChangeText={(HN)=>this.setState({HN})} keyboardType='numeric' placeholder="HN" style={styles.inputtext}/>
+
+        <View style={{flex:1}}>
+
+          <TextInput value={this.state.HN} onChangeText={(HN)=>this.setState({HN})} keyboardType='numeric' placeholder="HN" style={styles.inputtext}/>
           <TextInput value={this.state.petName} onChangeText={(petName)=>this.setState({petName})} keyboardType='default' placeholder="Pet name" style={styles.inputtext}/>
 
           <TextInput  keyboardType='default' value ={this.state.petType} style={styles.inputtext}/>
@@ -102,6 +105,10 @@ class Profile extends Component {
           <TextInput value={this.state.address} onChangeText={(address)=>this.setState({address})} keyboardType='default' placeholder="Address" style={styles.inputtext}/>
           <TextInput value={this.state.phoneNumber} onChangeText={(phoneNumber)=>this.setState({phoneNumber})} keyboardType='default' placeholder="Mobile number" style={styles.inputtext}/>
 		      <TextInput value={this.state.email} onChangeText={(email)=>this.setState({email})} keyboardType='default' placeholder="Email" style={styles.inputtext}/>
+          </View>
+
+          <View style={{flex:1}}>
+          </View>
         </View>
 
         <View style={styles.Vbottom}>
