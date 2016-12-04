@@ -17,7 +17,9 @@ import {
 class Diagnosis extends Component {
   constructor(props){
     super(props);
-    this.state = {HN:"",Currentdate:"",Symptom:"",Disagnosis:"",Treatment:"",Remark:""};
+
+    this.state = {HN:"",Currentdate:"",Symptom:"",Diagnosis:"",Treatment:"",Remark:""};
+
   }
 
 
