@@ -19,11 +19,17 @@ import {
   TouchableHighlight
 } from 'react-native';
 
+import * as firebase from 'firebase';
+
+
+
 class Profile extends Component {
 
   constructor(props){
     super(props);
     this.state = {modalVisible:false,HN:"",petName:"",petType:"Dog",birthDate:"",ownerName:"",address:"",phoneNumber:"",email:""};
+    this.database = firebase.database();
+
   }
 
 
