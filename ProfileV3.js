@@ -132,8 +132,10 @@ class Profile extends Component {
             selectedValue={this.state.petType}
             onValueChange={(pet) => this.setState({petType: pet})}
           >
-            <Picker.Item label = "Dog" value = "Dog" />
-            <Picker.Item label = "Cat" value = "Cat" />
+
+              <Picker.Item label = "Dog" value = "Dog" />
+              <Picker.Item label = "Cat" value = "Cat" />
+
           </Picker>
           </View>
           <View style = {style = styles.modalButtonHolder}>
