@@ -29,12 +29,37 @@ class Profile extends Component {
     super(props);
     this.state = {modalVisible:false,HN:"",petName:"",petType:"Dog",birthDate:"",ownerName:"",address:"",phoneNumber:"",email:""};
     this.database = firebase.database();
+    this.Profile = this.database.ref('Profile');
     this.writeDB = this.writeDB.bind(this);
+    this.findHN = this.findHN.bind(this);
+    this.findHN();
+  }
+
+  findHN(){
+    var newHN = 0;
+    this.Profile.on('value',(snap)=>{
+      snap.forEach((HNkey)=>{
+        var intHN = parseInt(HNkey,10);
+        
+        if(intHN > newHN){
+          newHN = intHN;
+          console.log(HNkey.key);
+        }
+      })
+    })
+
+    this.setState({HN:newHN})
   }
 
   writeDB(){
-    firebase.database().ref('Profile/1').set({
-      petName:this.state.petName
+    firebase.database().ref('Profile/'+this.state.HN).set({
+      petName:this.state.petName,
+      petType:this.state.petType,
+      birthDate:this.state.birthDate,
+      ownerName:this.state.ownerName,
+      address:this.state.address,
+      phoneNumber:this.state.phoneNumber,
+      email:this.state.email,
     });
   }
   render() {
