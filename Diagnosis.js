@@ -17,9 +17,7 @@ import {
 class Diagnosis extends Component {
   constructor(props){
     super(props);
-    this.state = {HN:"",Currentdate:"",Symptom:"",Disagnosis Disease:"",Treatment:"",Remark:""};
-    this.database = firebase.database();
-    this.writeDB = this.writeDB.bind(this);
+    this.state = {HN:"",Currentdate:"",Symptom:"",Disagnosis:"",Treatment:"",Remark:""};
   }
 
 
@@ -33,7 +31,7 @@ class Diagnosis extends Component {
         <TextInput value={this.state.HN} onChangeText={(HN)=>this.setState({HN})} keyboardType='numeric' placeholder="HN" style={styles.inputtext}/>
         <TextInput value={this.state.Currentdate} onChangeText={(Currentdate)=>this.setState({Currentdate})} keyboardType='default' placeholder="Currentdate" style={styles.inputtext}/>
         <TextInput value={this.state.Symptom} onChangeText={(Symptom)=>this.setState({Symptom})} keyboardType='default' placeholder="Symptom" style={styles.inputtext}/>
-        <TextInput value={this.state.Diagnosis} onChangeText={(Diagnosis Disease)=>this.setState({Diagnosis Disease})} keyboardType='default' placeholder="Diagnosis Disease" style={styles.inputtext}/>
+        <TextInput value={this.state.Diagnosis} onChangeText={(Diagnosis)=>this.setState({Diagnosis})} keyboardType='default' placeholder="Diagnosis Disease" style={styles.inputtext}/>
         <TextInput value={this.state.Treatment} onChangeText={(Treatment)=>this.setState({Treatment})} keyboardType='default' placeholder="Treatment" style={styles.inputtext}/>
         <TextInput value={this.state.Remark} onChangeText={(Remark)=>this.setState({Remark})} keyboardType='default' placeholder="Remark" style={styles.inputtext}/>
         </View>
