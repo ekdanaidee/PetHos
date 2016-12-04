@@ -110,7 +110,7 @@ class Profile extends Component {
           }
           // ... You can check the source to find the other keys.
         }}
-        onDateChange={(date) => {this.setState({birthDate: birthDate})}}
+        onDateChange={(date) => {this.setState({birthDate: date})}}
       />
           <TextInput value={this.state.ownerName} onChangeText={(ownerName)=>this.setState({ownerName})} keyboardType='default' placeholder="Owner name" style={styles.inputtext}/>
           <TextInput value={this.state.address} onChangeText={(address)=>this.setState({address})} keyboardType='default' placeholder="Address" style={styles.inputtext}/>
