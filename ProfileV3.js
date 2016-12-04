@@ -29,10 +29,14 @@ class Profile extends Component {
     super(props);
     this.state = {modalVisible:false,HN:"",petName:"",petType:"Dog",birthDate:"",ownerName:"",address:"",phoneNumber:"",email:""};
     this.database = firebase.database();
-
+    this.writeDB = this.writeDB.bind(this);
   }
 
-
+  writeDB(){
+    firebase.database().ref('Profile/1').set({
+      petName:this.state.petName
+    });
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -88,7 +92,7 @@ class Profile extends Component {
 
          </View>
         </Modal>
-          <TouchableOpacity style={styles.topButton}>
+          <TouchableOpacity style={styles.topButton} onPress={this.writeDB}>
             <Text style={styles.welcome}>Save</Text>
           </TouchableOpacity>
         </View>
