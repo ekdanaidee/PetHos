@@ -4,6 +4,8 @@
  * @flow
  */
 
+ //Version1.0
+
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -21,7 +23,7 @@ class Profile extends Component {
 
   constructor(props){
     super(props);
-    this.state = {modalVisible:false,petType:"Dog"};
+    this.state = {modalVisible:false,HN:"",petName:"",petType:"Dog",birthDate:"",ownerName:"",Address,"",phoneNumber};
   }
 
 
@@ -35,15 +37,18 @@ class Profile extends Component {
         <Text style={styles.welcome}>Profile</Text>
       </View>
         <View style={styles.Vmiddle}>
-          <TextInput keyboardType='numeric' placeholder="HN" style={styles.inputtext}/>
-          <TextInput keyboardType='phone-pad' placeholder="Pet name" style={styles.inputtext}/>
+          <TextInput value={this.state.HN} keyboardType='numeric' placeholder="HN" style={styles.inputtext}/>
+          <TextInput value={this.state.petName} keyboardType='default' placeholder="Pet name" style={styles.inputtext}/>
+
+          <TextInput  keyboardType='default' value ={this.state.petType} style={styles.inputtext}/>
           <TouchableHighlight style={styles.typeSelectbutton}onPress={() => {
             this.setState({modalVisible:true});
           }}>
+
             <Text>Select Pet Type</Text>
           </TouchableHighlight>
-          <TextInput keyboardType='default' placeholder="Birthdate" style={styles.inputtext}/>
 
+          <TextInput value={this.state.birthDate} keyboardType='default' placeholder="Birthdate" style={styles.inputtext}/>
           <TextInput keyboardType='default' placeholder="Owner name" style={styles.inputtext}/>
           <TextInput keyboardType='default' placeholder="Address" style={styles.inputtext}/>
           <TextInput keyboardType='default' placeholder="Mobile number" style={styles.inputtext}/>
