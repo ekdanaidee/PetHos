@@ -11,10 +11,53 @@ import {
   Text,
   View,
   TouchableOpacity,
-  TextInput
+  TextInput,
+  ListView,
 } from 'react-native';
 
+
+import * as firebase from 'firebase';
+
 class Report extends Component {
+
+  constructor(props){
+    super(props);
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.state = {HN:"",CustomerName:"",dataSource: ds.cloneWithRows([1,2])};
+    this.database = firebase.database();
+    this.Profile = this.database.ref('Profile');
+    this.findData = this.findData.bind(this);
+  }
+
+  findData(){
+    var newData = [];
+    this.Profile.on('value',(snap)=>{
+      snap.forEach((HNkey)=>{
+        this.database.ref('Profile/'+ HNkey.key).once('value',(result)=>{
+          newData.push({
+            title: result.val().ownerName,
+            _key: HNkey.key
+          });
+        })
+      })
+    })
+    this.setState({
+    dataSource: this.state.dataSource.cloneWithRows(newData)
+    })
+  }
+
+
+  componentWillMount(){
+    console.log("ComponentWillMount");
+    this.findData();
+  }
+   componentDidMount(){
+     console.log("componentDidMount");
+   }
+   componentWillReceiveProps(nextProps){
+     console.log("componentWillReceiveProps");
+   }
+
   render() {
     return (
       <View style={styles.container}>
@@ -22,36 +65,39 @@ class Report extends Component {
         <Text style={styles.welcome}>Report</Text>
       </View>
         <View style={styles.Vmiddle}>
-          <TextInput keyboardType='numeric' placeholder="HN" style={styles.inputtext}/>
-          <TextInput keyboardType='phone-pad' placeholder="Date" style={styles.inputtext}/>
-          <TextInput keyboardType='default' placeholder="Type" style={styles.inputtext}/>
-          <TextInput keyboardType='default' placeholder="To" style={styles.inputtext}/>
+        <ListView
+          dataSource={this.state.dataSource}
+          renderRow={(rowData)=>
+            <TouchableOpacity onPress = {()=>{
+              this.setState({HN:rowData._key,CustomerName:rowData.title});
 
-          <TextInput keyboardType='default' placeholder="Symptom" style={styles.inputtext}/>
-          <TextInput keyboardType='default' placeholder="Diagnosis Disease" style={styles.inputtext}/>
-          <TextInput keyboardType='default' placeholder="Treatment" style={styles.inputtext}/>
-		  <TextInput keyboardType='default' placeholder="Summary Charge" style={styles.inputtext}/>
-		  <TextInput keyboardType='default' placeholder="Remark" style={styles.inputtext}/>
-        </View>
+              this.props.navigator.push({index: 5,passProps:{HN:rowData._key}})
 
-        <View style={styles.Vbottom}>
-        <View style={styles.Vbottom}>
-          <TouchableOpacity style={styles.topButton}>
-            <Text style={styles.welcome}>Save</Text>
-          </TouchableOpacity>
+           }}>
+              <View style={styles.li}>
+                <Text style={styles.liText}>{rowData.title}</Text>
+              </View>
+            </TouchableOpacity>
+          }
+         />
         </View>
         <View style={styles.Vbottom}>
-      		<TouchableOpacity style={styles.topButton}>
-            <Text style={styles.welcome}>Edit</Text>
-          </TouchableOpacity>
+          <View style={styles.Vbottom}>
+            <TouchableOpacity style={styles.topButton}>
+              <Text style={styles.welcome}>Save</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.Vbottom}>
+        		<TouchableOpacity style={styles.topButton}>
+              <Text style={styles.welcome}>Edit</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.Vleft}>
+            <TouchableOpacity style={styles.topButton} onPress={()=>this.props.navigator.pop()}>
+              <Text style={styles.welcome}>Cancel</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <View style={styles.Vleft}>
-          <TouchableOpacity style={styles.topButton} onPress={()=>this.props.navigator.pop()}>
-            <Text style={styles.welcome}>Cancel</Text>
-          </TouchableOpacity>
-        </View>
-        </View>
-
       </View>
     );
   }
@@ -103,7 +149,29 @@ const styles = StyleSheet.create({
     flex:1,
     flexDirection:'row',
     backgroundColor: "red",
-  }
+  },
+  liText: {
+    color: '#333',
+    fontSize: 16,
+  },
+  li: {
+    backgroundColor: '#fff',
+    borderBottomColor: '#eee',
+    borderColor: 'transparent',
+    borderWidth: 1,
+    paddingLeft: 16,
+    paddingTop: 14,
+    paddingBottom: 16,
+  },
+  headerText:{
+    color:"white",
+    marginRight:4,
+    fontSize:16
+  },
+  IDHolder:{
+    flexDirection:"row",
+  },
+
 
 });
 

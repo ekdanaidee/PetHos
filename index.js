@@ -23,6 +23,7 @@ import Profile from './ProfileV3.js';
 import Option from './Option.js';
 import Diagnosis from './Diagnosis.js';
 import Report from './Report.js';
+import ReportInfo from './ReportInfo.js';
 
 
 const routes = [
@@ -45,6 +46,10 @@ const routes = [
   {
     title:'Report',
     index: 4
+  },
+  {
+    title:'ReportInfo',
+    index: 5
   }
 ]
 
@@ -65,6 +70,7 @@ export default class PetHos extends Component {
                   case 2: return (<Option navigator={navigator} route={routes[route.index]} {...route.passProps}></Option>);
                   case 3: return (<Diagnosis navigator={navigator} route={routes[route.index]} {...route.passProps}></Diagnosis>);
                   case 4: return (<Report navigator={navigator} route={routes[route.index]} {...route.passProps}></Report>);
+                  case 5: return (<ReportInfo navigator={navigator} route={routes[route.index]} {...route.passProps}></ReportInfo>);
 
                 }
               }

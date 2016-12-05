@@ -92,7 +92,7 @@ class Diagnosis extends Component {
           <View style={styles.ModalList}>
           <ListView
 
-             dataSource={this.state.dataSource}
+            dataSource={this.state.dataSource}
             renderRow={(rowData)=>
               <TouchableOpacity onPress = {()=>{
                   this.setState({modalVisible:false,HN:rowData._key,CustomerName:rowData.title,petName:rowData.nameofPet});
@@ -146,7 +146,7 @@ class Diagnosis extends Component {
                   }
                   // ... You can check the source to find the other keys.
                   }}
-                  onDateChange={(date) => {this.setState({Currentdate: date})}}
+                  onDateChange={(date)=>{this.setState({Currentdate:date})}}
                   />
           <TextInput value={this.state.Symptom} onChangeText={(Symptom)=>this.setState({Symptom})} keyboardType='default' placeholder="Symptom" style={styles.inputtext}/>
           <TextInput value={this.state.Diagnosis} onChangeText={(Diagnosis)=>this.setState({Diagnosis})} keyboardType='default' placeholder="Diagnosis Disease" style={styles.inputtext}/>

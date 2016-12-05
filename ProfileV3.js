@@ -92,20 +92,20 @@ class Profile extends Component {
           }}>
             <Text>{this.state.petType}</Text>
           </TouchableHighlight>
-          <DatePicker style={{width: 200}} date={this.state.birthDate} mode="date" placeholder="select birth date" format="YYYY-MM-DD" minDate="1990-01-01" maxDate="2016-12-05" confirmBtnText="Confirm"
-        cancelBtnText="Cancel" customStyles={{ dateIcon: {
-            position: 'absolute',
-            left: 0,
-            top: 4,
-            marginLeft: 0
-          },
-          dateInput: {
-            marginLeft: 36
-          }
-          // ... You can check the source to find the other keys.
-        }}
-        onDateChange={(date) => {this.setState({birthDate: date})}}
-      />
+          <DatePicker style={{width: 200}} date={this.state.birthDate} mode="date" placeholder="select date" format="YYYY-MM-DD" minDate="1990-01-01" maxDate="2016-12-05" confirmBtnText="Confirm"
+                  cancelBtnText="Cancel" customStyles={{ dateIcon: {
+                    position: 'absolute',
+                    left: 0,
+                    top: 4,
+                    marginLeft: 0
+                  },
+                  dateInput: {
+                    marginLeft: 36
+                  }
+                  // ... You can check the source to find the other keys.
+                  }}
+                  onDateChange={(date)=>{this.setState({birthDate:date})}}
+                  />
           <TextInput value={this.state.ownerName} onChangeText={(ownerName)=>this.setState({ownerName})} keyboardType='default' placeholder="Owner name" style={styles.inputtext}/>
           <TextInput value={this.state.address} onChangeText={(address)=>this.setState({address})} keyboardType='default' placeholder="Address" style={styles.inputtext}/>
           <TextInput value={this.state.phoneNumber} onChangeText={(phoneNumber)=>this.setState({phoneNumber})} keyboardType='default' placeholder="Mobile number" style={styles.inputtext}/>
