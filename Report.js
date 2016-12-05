@@ -66,6 +66,7 @@ class Report extends Component {
       </View>
         <View style={styles.Vmiddle}>
         <ListView
+          enableEmptySections={true}
           dataSource={this.state.dataSource}
           renderRow={(rowData)=>
             <TouchableOpacity onPress = {()=>{
@@ -82,19 +83,10 @@ class Report extends Component {
          />
         </View>
         <View style={styles.Vbottom}>
-          <View style={styles.Vbottom}>
-            <TouchableOpacity style={styles.topButton}>
-              <Text style={styles.welcome}>Save</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.Vbottom}>
-        		<TouchableOpacity style={styles.topButton}>
-              <Text style={styles.welcome}>Edit</Text>
-            </TouchableOpacity>
-          </View>
+
           <View style={styles.Vleft}>
             <TouchableOpacity style={styles.topButton} onPress={()=>this.props.navigator.pop()}>
-              <Text style={styles.welcome}>Cancel</Text>
+              <Text style={styles.welcome}>Back</Text>
             </TouchableOpacity>
           </View>
         </View>

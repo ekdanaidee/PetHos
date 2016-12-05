@@ -91,7 +91,7 @@ class Diagnosis extends Component {
          </View>
           <View style={styles.ModalList}>
           <ListView
-
+            enableEmptySections={true}
             dataSource={this.state.dataSource}
             renderRow={(rowData)=>
               <TouchableOpacity onPress = {()=>{

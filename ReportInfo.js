@@ -109,6 +109,7 @@ class ReportInfo extends Component {
 
         <View style={styles.VunderMiddle}>
         <ListView
+          enableEmptySections={true}
           dataSource={this.state.dataSource}
           renderRow={(rowData)=>
 
@@ -125,19 +126,10 @@ class ReportInfo extends Component {
         </View>
 
         <View style={styles.Vbottom}>
-          <View style={styles.Vbottom}>
-            <TouchableOpacity style={styles.topButton}>
-              <Text style={styles.welcome}>Save</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.Vbottom}>
-        		<TouchableOpacity style={styles.topButton}>
-              <Text style={styles.welcome}>Edit</Text>
-            </TouchableOpacity>
-          </View>
+
           <View style={styles.Cancel}>
             <TouchableOpacity style={styles.topButton} onPress={()=>this.props.navigator.pop()}>
-              <Text style={styles.welcome}>Cancel</Text>
+              <Text style={styles.welcome}>Back</Text>
             </TouchableOpacity>
           </View>
         </View>

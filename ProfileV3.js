@@ -150,11 +150,7 @@ class Profile extends Component {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.Vbottom}>
-      		<TouchableOpacity style={styles.topButton}>
-            <Text style={styles.welcome}>Edit</Text>
-          </TouchableOpacity>
-        </View>
+
         <View style={styles.Cancel}>
           <TouchableOpacity style={styles.topButton} onPress={()=>this.props.navigator.pop()}>
             <Text style={styles.welcome}>Cancel</Text>
